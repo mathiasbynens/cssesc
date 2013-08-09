@@ -156,6 +156,23 @@ cssesc('lolwat"foo\'bar', {
 // → "\\6C\\6F\\6C\\77\\61\\74\\\"\\66\\6F\\6F\\'\\62\\61\\72"
 ```
 
+#### Overriding the default options globally
+
+The global default settings can be overridden by modifying the `css.options` object. This saves you from passing in an `options` object for every call to `encode` if you want to use the non-default setting.
+
+```js
+// Read the global default setting for `escapeEverything`:
+he.options.escapeEverything;
+// → `false` by default
+
+// Override the global default setting for `escapeEverything`:
+he.options.escapeEverything = true;
+
+// Using the global default setting for `escapeEverything`, which is now `true`:
+cssesc('foo © bar ≠ baz 𝌆 qux');
+// → '\\66\\6F\\6F\\ \\A9\\ \\62\\61\\72\\ \\2260\\ \\62\\61\\7A\\ \\1D306\\ \\71\\75\\78'
+```
+
 ### `cssesc.version`
 
 A string representing the semantic version number.
