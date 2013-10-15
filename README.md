@@ -4,6 +4,8 @@ A JavaScript library for escaping CSS strings and identifiers while generating t
 
 This is a JavaScript library for [escaping text for use in CSS strings or identifiers](http://mathiasbynens.be/notes/css-escapes) while generating the shortest possible valid ASCII-only output. [Here’s an online demo.](http://mothereff.in/css-escapes)
 
+[A polyfill for the CSSOM `CSS.escape()` method is available in a separate repository.](http://mths.be/cssescape) (In comparison, _cssesc_ is much more powerful.)
+
 Feel free to fork if you see possible improvements!
 
 ## Installation
@@ -162,11 +164,11 @@ The global default settings can be overridden by modifying the `css.options` obj
 
 ```js
 // Read the global default setting for `escapeEverything`:
-he.options.escapeEverything;
+cssesc.options.escapeEverything;
 // → `false` by default
 
 // Override the global default setting for `escapeEverything`:
-he.options.escapeEverything = true;
+cssesc.options.escapeEverything = true;
 
 // Using the global default setting for `escapeEverything`, which is now `true`:
 cssesc('foo © bar ≠ baz 𝌆 qux');
