@@ -34,6 +34,12 @@ In a browser:
 <script src="cssesc.js"></script>
 ```
 
+As a [Component](https://github.com/component/component) in a browser:
+
+```js
+var cssesc = require('cssesc').cssesc;
+```
+
 In [Node.js](http://nodejs.org/) and [RingoJS](http://ringojs.org/):
 
 ```js
