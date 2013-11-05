@@ -7,7 +7,6 @@
 	var stdin = process.stdin;
 	var data;
 	var timeout;
-	var isObject = false;
 	var options = {};
 	var log = console.log;
 
