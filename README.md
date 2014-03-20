@@ -1,4 +1,4 @@
-# cssesc [![Build status](https://travis-ci.org/mathiasbynens/cssesc.png?branch=master)](https://travis-ci.org/mathiasbynens/cssesc) [![Dependency status](https://gemnasium.com/mathiasbynens/cssesc.png)](https://gemnasium.com/mathiasbynens/cssesc)
+# cssesc [![Build status](https://travis-ci.org/mathiasbynens/cssesc.svg?branch=master)](https://travis-ci.org/mathiasbynens/cssesc) [![Dependency status](https://gemnasium.com/mathiasbynens/cssesc.svg)](https://gemnasium.com/mathiasbynens/cssesc)
 
 A JavaScript library for escaping CSS strings and identifiers while generating the shortest possible ASCII-only output.
 
@@ -223,7 +223,7 @@ To generate [the code coverage report](http://rawgithub.com/mathiasbynens/cssesc
 
 ## Author
 
-| [![twitter/mathias](http://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](http://twitter.com/mathias "Follow @mathias on Twitter") |
+| [![twitter/mathias](https://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](https://twitter.com/mathias "Follow @mathias on Twitter") |
 |---|
 | [Mathias Bynens](http://mathiasbynens.be/) |
 
