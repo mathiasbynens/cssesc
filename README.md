@@ -2,9 +2,9 @@
 
 A JavaScript library for escaping CSS strings and identifiers while generating the shortest possible ASCII-only output.
 
-This is a JavaScript library for [escaping text for use in CSS strings or identifiers](http://mathiasbynens.be/notes/css-escapes) while generating the shortest possible valid ASCII-only output. [Here’s an online demo.](http://mothereff.in/css-escapes)
+This is a JavaScript library for [escaping text for use in CSS strings or identifiers](https://mathiasbynens.be/notes/css-escapes) while generating the shortest possible valid ASCII-only output. [Here’s an online demo.](https://mothereff.in/css-escapes)
 
-[A polyfill for the CSSOM `CSS.escape()` method is available in a separate repository.](http://mths.be/cssescape) (In comparison, _cssesc_ is much more powerful.)
+[A polyfill for the CSSOM `CSS.escape()` method is available in a separate repository.](https://mths.be/cssescape) (In comparison, _cssesc_ is much more powerful.)
 
 Feel free to fork if you see possible improvements!
 
@@ -22,7 +22,7 @@ Via [Component](https://github.com/component/component):
 component install mathiasbynens/cssesc
 ```
 
-Via [npm](http://npmjs.org/):
+Via [npm](https://www.npmjs.org/):
 
 ```bash
 npm install cssesc
@@ -40,7 +40,7 @@ As a [Component](https://github.com/component/component) in a browser:
 var cssesc = require('cssesc').cssesc;
 ```
 
-In [Node.js](http://nodejs.org/) and [RingoJS](http://ringojs.org/):
+In [Node.js](https://nodejs.org/) and [RingoJS](http://ringojs.org/):
 
 ```js
 var cssesc = require('cssesc');
@@ -78,7 +78,7 @@ require(
 
 ### `cssesc(value, options)`
 
-This function takes a value and returns an escaped version of the value where any characters that are not printable ASCII symbols are escaped using the shortest possible (but valid) [escape sequences for use in CSS strings or identifiers](http://mathiasbynens.be/notes/css-escapes).
+This function takes a value and returns an escaped version of the value where any characters that are not printable ASCII symbols are escaped using the shortest possible (but valid) [escape sequences for use in CSS strings or identifiers](https://mathiasbynens.be/notes/css-escapes).
 
 ```js
 cssesc('Ich ♥ Bücher');
@@ -225,8 +225,8 @@ To generate [the code coverage report](http://rawgithub.com/mathiasbynens/cssesc
 
 | [![twitter/mathias](https://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](https://twitter.com/mathias "Follow @mathias on Twitter") |
 |---|
-| [Mathias Bynens](http://mathiasbynens.be/) |
+| [Mathias Bynens](https://mathiasbynens.be/) |
 
 ## License
 
-This library is available under the [MIT](http://mths.be/mit) license.
+This library is available under the [MIT](https://mths.be/mit) license.

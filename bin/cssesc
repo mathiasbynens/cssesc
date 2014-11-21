@@ -15,7 +15,7 @@
 
 		if (/^(?:-h|--help|undefined)$/.test(option)) {
 			log(
-				'cssesc v%s - http://mths.be/cssesc',
+				'cssesc v%s - https://mths.be/cssesc',
 				cssesc.version
 			);
 			log([

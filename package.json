@@ -2,7 +2,7 @@
 	"name": "cssesc",
 	"version": "0.1.0",
 	"description": "A JavaScript library for escaping CSS strings and identifiers while generating the shortest possible ASCII-only output.",
-	"homepage": "http://mths.be/cssesc",
+	"homepage": "https://mths.be/cssesc",
 	"main": "cssesc.js",
 	"bin": "bin/cssesc",
 	"man": "man/cssesc.1",
@@ -13,32 +13,22 @@
 		"string",
 		"tool"
 	],
-	"licenses": [
-		{
-			"type": "MIT",
-			"url": "http://mths.be/mit"
-		}
-	],
+	"license": "MIT",
 	"author": {
 		"name": "Mathias Bynens",
-		"url": "http://mathiasbynens.be/"
+		"url": "https://mathiasbynens.be/"
 	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/mathiasbynens/cssesc.git"
 	},
-	"bugs": {
-		"url": "https://github.com/mathiasbynens/cssesc/issues"
-	},
+	"bugs": "https://github.com/mathiasbynens/cssesc/issues",
 	"files": [
 		"LICENSE-MIT.txt",
 		"cssesc.js",
 		"bin/",
 		"man/"
 	],
-	"directories": {
-		"test": "tests"
-	},
 	"scripts": {
 		"test": "node tests/tests.js"
 	},

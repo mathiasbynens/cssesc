@@ -1,4 +1,4 @@
-/*! http://mths.be/cssesc v<%= version %> by @mathias */
+/*! https://mths.be/cssesc v<%= version %> by @mathias */
 ;(function(root) {
 
 	// Detect free variables `exports`
@@ -42,7 +42,7 @@
 	var regexAlwaysEscape = /['"\\]/;
 	var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
 
-	// http://mathiasbynens.be/notes/css-escapes#css
+	// https://mathiasbynens.be/notes/css-escapes#css
 	var cssesc = function(string, options) {
 
 		// Handle options
