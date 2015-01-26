@@ -1,4 +1,4 @@
-# cssesc [![Build status](https://travis-ci.org/mathiasbynens/cssesc.svg?branch=master)](https://travis-ci.org/mathiasbynens/cssesc) [![Dependency status](https://gemnasium.com/mathiasbynens/cssesc.svg)](https://gemnasium.com/mathiasbynens/cssesc)
+# cssesc [![Build status](https://travis-ci.org/mathiasbynens/cssesc.svg?branch=master)](https://travis-ci.org/mathiasbynens/cssesc) [![Code coverage status](https://coveralls.io/repos/mathiasbynens/cssesc/badge.svg)](https://coveralls.io/r/mathiasbynens/cssesc) [![Dependency status](https://gemnasium.com/mathiasbynens/cssesc.svg)](https://gemnasium.com/mathiasbynens/cssesc)
 
 A JavaScript library for escaping CSS strings and identifiers while generating the shortest possible ASCII-only output.
 
@@ -22,7 +22,7 @@ Via [Component](https://github.com/component/component):
 component install mathiasbynens/cssesc
 ```
 
-Via [npm](https://www.npmjs.org/):
+Via [npm](https://www.npmjs.com/):
 
 ```bash
 npm install cssesc
@@ -40,7 +40,7 @@ As a [Component](https://github.com/component/component) in a browser:
 var cssesc = require('cssesc').cssesc;
 ```
 
-In [Node.js](https://nodejs.org/) and [RingoJS](http://ringojs.org/):
+In [io.js](https://iojs.org/), [Node.js](https://nodejs.org/) and [RingoJS](http://ringojs.org/):
 
 ```js
 var cssesc = require('cssesc');
@@ -211,7 +211,7 @@ See `cssesc --help` for the full list of options.
 
 ## Support
 
-This library has been tested in at least Chrome 28-30, Firefox 3-23, Safari 4-6, Opera 10-15, IE 6-10, Node.js v0.10.0, Narwhal 0.3.2, RingoJS 0.8-0.9, PhantomJS 1.9.0, and Rhino 1.7RC4.
+This library has been tested in at least Chrome 28, Firefox 3, Safari 4, Opera 10, IE 6, Node.js v0.10.0, io.js v1.0.0, Narwhal 0.3.2, RingoJS 0.8, PhantomJS 1.9.0, and Rhino 1.7RC4.
 
 ## Unit tests & code coverage
 

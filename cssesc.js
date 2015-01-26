@@ -37,8 +37,8 @@
 
 	/*--------------------------------------------------------------------------*/
 
-	var regexAnySingleEscape = /[\x20-\x2C\x2E\x2F\x3B-\x40\x5B-\x5E\x60\x7B-\x7E]/;
-	var regexSingleEscape = /[\x20\x21\x23-\x26\x28-\x2C\x2E\x2F\x3B-\x40\x5B\x5D\x5E\x60\x7B-\x7E]/;
+	var regexAnySingleEscape = /[ -,\./;-@\[-\^`\{-~]/;
+	var regexSingleEscape = /[ !#-&\(-,\./;-@\[\]\^`\{-~]/;
 	var regexAlwaysEscape = /['"\\]/;
 	var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
 

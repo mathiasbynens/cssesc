@@ -1,26 +1,27 @@
-;(function(root) {
+(function(root) {
 	'use strict';
 
-	/** Use a single `load` function */
-	var load = typeof require == 'function' ? require : root.load;
+	var noop = Function.prototype;
 
-	/** The unit testing framework */
+	var load = (typeof require == 'function' && !(root.define && define.amd)) ?
+		require :
+		(!root.document && root.java && root.load) || noop;
+
 	var QUnit = (function() {
-		var noop = Function.prototype;
 		return root.QUnit || (
 			root.addEventListener || (root.addEventListener = noop),
 			root.setTimeout || (root.setTimeout = noop),
 			root.QUnit = load('../node_modules/qunitjs/qunit/qunit.js') || root.QUnit,
-			(load('../node_modules/qunit-clib/qunit-clib.js') || { 'runInContext': noop }).runInContext(root),
 			addEventListener === noop && delete root.addEventListener,
 			root.QUnit
 		);
 	}());
 
-	// Extend `Object.prototype` to see if this library can handle it.
-	Object.prototype['♥'] = '...';
+	var qe = load('../node_modules/qunit-extras/qunit-extras.js');
+	if (qe) {
+		qe.runInContext(root);
+	}
 
-	/** The `regenerate` object to test */
 	var cssesc = root.cssesc || (root.cssesc = (
 		cssesc = load('../cssesc.js') || root.cssesc,
 		cssesc = cssesc.cssesc || cssesc
@@ -195,10 +196,9 @@
 
 	/*--------------------------------------------------------------------------*/
 
-	// configure QUnit and call `QUnit.start()` for
-	// Narwhal, Node.js, PhantomJS, Rhino, and RingoJS
+	// Depending on the version of `QUnit` call either `QUnit.start()` or
+	// `QUnit.load()` when in a CLI or PhantomJS.
 	if (!root.document || root.phantom) {
-		QUnit.config.noglobals = true;
-		QUnit.start();
+		QUnit.load();
 	}
 }(typeof global == 'object' && global || this));
