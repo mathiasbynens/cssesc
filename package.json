@@ -35,12 +35,12 @@
 	"devDependencies": {
 		"coveralls": "^2.11.2",
 		"grunt": "^0.4.4",
-		"grunt-shell": "^1.1.1",
+		"grunt-shell": "^1.1.2",
 		"grunt-template": "^0.2.3",
-		"istanbul": "^0.3.5",
+		"istanbul": "^0.3.7",
 		"qunit-extras": "^1.4.1",
-		"qunitjs": "^1.16.0",
+		"qunitjs": "^1.17.1",
 		"regenerate": "^1.2.1",
-		"requirejs": "^2.1.9"
+		"requirejs": "^2.1.16"
 	}
 }
