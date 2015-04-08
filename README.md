@@ -74,6 +74,29 @@ require(
 );
 ```
 
+In Ruby using [a wrapper gem](https://github.com/borodean/ruby-cssesc):
+
+```bash
+gem install ruby-cssesc
+```
+
+```ruby
+require 'ruby-cssesc'
+CSSEsc.escape('I ♥ Ruby')
+```
+
+In Sass using [sassy-escape](https://github.com/borodean/sassy-escape):
+
+```bash
+gem install sassy-escape
+```
+
+```scss
+body {
+  content: escape('I ♥ Sass');
+}
+```
+
 ## API
 
 ### `cssesc(value, options)`
