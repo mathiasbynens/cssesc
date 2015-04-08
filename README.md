@@ -82,7 +82,7 @@ gem install ruby-cssesc
 
 ```ruby
 require 'ruby-cssesc'
-CSSEsc.escape('I ♥ Ruby')
+CSSEsc.escape('I ♥ Ruby', is_identifier: true)
 ```
 
 In Sass using [sassy-escape](https://github.com/borodean/sassy-escape):
@@ -93,7 +93,7 @@ gem install sassy-escape
 
 ```scss
 body {
-  content: escape('I ♥ Sass');
+  content: escape('I ♥ Sass', $is-identifier: true);
 }
 ```
 
