@@ -1,4 +1,4 @@
-# cssesc [![Build status](https://travis-ci.org/mathiasbynens/cssesc.svg?branch=master)](https://travis-ci.org/mathiasbynens/cssesc) [![Code coverage status](https://coveralls.io/repos/mathiasbynens/cssesc/badge.svg)](https://coveralls.io/r/mathiasbynens/cssesc) [![Dependency status](https://gemnasium.com/mathiasbynens/cssesc.svg)](https://gemnasium.com/mathiasbynens/cssesc)
+# cssesc [![Build status](https://travis-ci.org/mathiasbynens/cssesc.svg?branch=master)](https://travis-ci.org/mathiasbynens/cssesc) [![Code coverage status](https://img.shields.io/codecov/c/github/mathiasbynens/cssesc.svg)](https://codecov.io/gh/mathiasbynens/cssesc)
 
 A JavaScript library for escaping CSS strings and identifiers while generating the shortest possible ASCII-only output.
 
@@ -9,18 +9,6 @@ This is a JavaScript library for [escaping text for use in CSS strings or identi
 Feel free to fork if you see possible improvements!
 
 ## Installation
-
-Via [Bower](http://bower.io/):
-
-```bash
-bower install cssesc
-```
-
-Via [Component](https://github.com/component/component):
-
-```bash
-component install mathiasbynens/cssesc
-```
 
 Via [npm](https://www.npmjs.com/):
 
@@ -34,44 +22,10 @@ In a browser:
 <script src="cssesc.js"></script>
 ```
 
-As a [Component](https://github.com/component/component) in a browser:
+In [Node.js](https://nodejs.org/):
 
 ```js
-var cssesc = require('cssesc').cssesc;
-```
-
-In [io.js](https://iojs.org/), [Node.js](https://nodejs.org/) and [RingoJS](http://ringojs.org/):
-
-```js
-var cssesc = require('cssesc');
-```
-
-In [Narwhal](http://narwhaljs.org/):
-
-```js
-var cssesc = require('cssesc').cssesc;
-```
-
-In [Rhino](http://www.mozilla.org/rhino/):
-
-```js
-load('cssesc.js');
-```
-
-Using an AMD loader like [RequireJS](http://requirejs.org/):
-
-```js
-require(
-  {
-    'paths': {
-      'cssesc': 'path/to/cssesc'
-    }
-  },
-  ['cssesc'],
-  function(cssesc) {
-    console.log(cssesc);
-  }
-);
+const cssesc = require('cssesc');
 ```
 
 In Ruby using [the `ruby-cssesc` wrapper gem](https://github.com/borodean/ruby-cssesc):
@@ -234,15 +188,7 @@ See `cssesc --help` for the full list of options.
 
 ## Support
 
-This library has been tested in at least Chrome 28, Firefox 3, Safari 4, Opera 10, IE 6, Node.js v0.10.0, io.js v1.0.0, Narwhal 0.3.2, RingoJS 0.8, PhantomJS 1.9.0, and Rhino 1.7RC4.
-
-## Unit tests & code coverage
-
-After cloning this repository, run `npm install` to install the dependencies needed for development and testing. You may want to install Istanbul _globally_ using `npm install istanbul -g`.
-
-Once that’s done, you can run the unit tests in Node using `npm test` or `node tests/tests.js`. To run the tests in Rhino, Ringo, Narwhal, and web browsers as well, use `grunt test`.
-
-To generate [the code coverage report](http://rawgithub.com/mathiasbynens/cssesc/master/coverage/cssesc/cssesc.js.html), use `grunt cover`.
+This library supports Node.js v4+ only. For a version that supports browser and environments out-of-the-box, [see v0.1.0](https://github.com/mathiasbynens/cssesc/releases/tag/v0.1.0).
 
 ## Author
 

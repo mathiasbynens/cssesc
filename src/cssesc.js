@@ -1,177 +1,130 @@
 /*! https://mths.be/cssesc v<%= version %> by @mathias */
-;(function(root) {
+'use strict';
 
-	// Detect free variables `exports`
-	var freeExports = typeof exports == 'object' && exports;
-
-	// Detect free variable `module`
-	var freeModule = typeof module == 'object' && module &&
-		module.exports == freeExports && module;
-
-	// Detect free variable `global`, from Node.js or Browserified code,
-	// and use it as `root`
-	var freeGlobal = typeof global == 'object' && global;
-	if (freeGlobal.global === freeGlobal || freeGlobal.window === freeGlobal) {
-		root = freeGlobal;
+const object = {};
+const hasOwnProperty = object.hasOwnProperty;
+const merge = function(options, defaults) {
+	if (!options) {
+		return defaults;
 	}
+	const result = {};
+	for (let key in defaults) {
+		// `if (defaults.hasOwnProperty(key) { … }` is not needed here, since
+		// only recognized option names are used.
+		result[key] = hasOwnProperty.call(options, key)
+			? options[key]
+			: defaults[key];
+	}
+	return result;
+};
 
-	/*--------------------------------------------------------------------------*/
+const regexAnySingleEscape = /<%= anySingleEscape %>/;
+const regexSingleEscape = /<%= singleEscapes %>/;
+const regexAlwaysEscape = /['"\\]/;
+const regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
 
-	var object = {};
-	var hasOwnProperty = object.hasOwnProperty;
-	var merge = function(options, defaults) {
-		if (!options) {
-			return defaults;
-		}
-		var key;
-		var result = {};
-		for (key in defaults) {
-			// `if (defaults.hasOwnProperty(key) { … }` is not needed here, since
-			// only recognized option names are used
-			result[key] = hasOwnProperty.call(options, key)
-				? options[key]
-				: defaults[key];
-		}
-		return result;
-	};
+// https://mathiasbynens.be/notes/css-escapes#css
+const cssesc = function(string, options) {
+	options = merge(options, cssesc.options);
+	if (options.quotes != 'single' && options.quotes != 'double') {
+		options.quotes = 'single';
+	}
+	const quote = options.quotes == 'double' ? '"' : '\'';
+	const isIdentifier = options.isIdentifier;
 
-	/*--------------------------------------------------------------------------*/
-
-	var regexAnySingleEscape = /<%= anySingleEscape %>/;
-	var regexSingleEscape = /<%= singleEscapes %>/;
-	var regexAlwaysEscape = /['"\\]/;
-	var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
-
-	// https://mathiasbynens.be/notes/css-escapes#css
-	var cssesc = function(string, options) {
-
-		// Handle options
-		options = merge(options, cssesc.options);
-		if (options.quotes != 'single' && options.quotes != 'double') {
-			options.quotes = 'single';
-		}
-		var quote = options.quotes == 'double' ? '"' : '\'';
-		var isIdentifier = options.isIdentifier;
-
-		var firstChar = string.charAt(0);
-		var output = '';
-		var counter = 0;
-		var length = string.length;
-		var value;
-		var character;
-		var codePoint;
-		var extra; // used for potential low surrogates
-
-		while (counter < length) {
-			character = string.charAt(counter++);
-			codePoint = character.charCodeAt();
-			// If it’s not a printable ASCII character…
-			if (codePoint < 0x20 || codePoint > 0x7E) {
-				if (codePoint >= 0xD800 && codePoint <= 0xDBFF && counter < length) {
-					// It’s a high surrogate, and there is a next character.
-					extra = string.charCodeAt(counter++);
-					if ((extra & 0xFC00) == 0xDC00) { // next character is low surrogate
-						codePoint = ((codePoint & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000;
-					} else {
-						// It’s an unmatched surrogate; only append this code unit, in case
-						// the next code unit is the high surrogate of a surrogate pair.
-						counter--;
-					}
+	const firstChar = string.charAt(0);
+	let output = '';
+	let counter = 0;
+	const length = string.length;
+	while (counter < length) {
+		const character = string.charAt(counter++);
+		let codePoint = character.charCodeAt();
+		let value;
+		// If it’s not a printable ASCII character…
+		if (codePoint < 0x20 || codePoint > 0x7E) {
+			if (codePoint >= 0xD800 && codePoint <= 0xDBFF && counter < length) {
+				// It’s a high surrogate, and there is a next character.
+				const extra = string.charCodeAt(counter++);
+				if ((extra & 0xFC00) == 0xDC00) { // next character is low surrogate
+					codePoint = ((codePoint & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000;
+				} else {
+					// It’s an unmatched surrogate; only append this code unit, in case
+					// the next code unit is the high surrogate of a surrogate pair.
+					counter--;
 				}
-				value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
-			} else {
-				if (options.escapeEverything) {
-					if (regexAnySingleEscape.test(character)) {
-						value = '\\' + character;
-					} else {
-						value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
-					}
-				// Note: `:` could be escaped as `\:`, but that fails in IE < 8.
-				} else if (/[\t\n\f\r\x0B:]/.test(character)) {
-					if (!isIdentifier && character == ':') {
-						value = character;
-					} else {
-						value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
-					}
-				} else if (
-					character == '\\' ||
-					(
-						!isIdentifier &&
-						(
-							(character == '"' && quote == character) ||
-							(character == '\'' && quote == character)
-						)
-					) ||
-					(isIdentifier && regexSingleEscape.test(character))
-				) {
+			}
+			value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
+		} else {
+			if (options.escapeEverything) {
+				if (regexAnySingleEscape.test(character)) {
 					value = '\\' + character;
 				} else {
-					value = character;
+					value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
 				}
+			// Note: `:` could be escaped as `\:`, but that fails in IE < 8.
+			} else if (/[\t\n\f\r\x0B:]/.test(character)) {
+				if (!isIdentifier && character == ':') {
+					value = character;
+				} else {
+					value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
+				}
+			} else if (
+				character == '\\' ||
+				(
+					!isIdentifier &&
+					(
+						(character == '"' && quote == character) ||
+						(character == '\'' && quote == character)
+					)
+				) ||
+				(isIdentifier && regexSingleEscape.test(character))
+			) {
+				value = '\\' + character;
+			} else {
+				value = character;
 			}
-			output += value;
 		}
-
-		if (isIdentifier) {
-			if (/^_/.test(output)) {
-				// Prevent IE6 from ignoring the rule altogether (in case this is for an
-				// identifier used as a selector)
-				output = '\\_' + output.slice(1);
-			} else if (/^-[-\d]/.test(output)) {
-				output = '\\-' + output.slice(1);
-			} else if (/\d/.test(firstChar)) {
-				output = '\\3' + firstChar + ' ' + output.slice(1);
-			}
-		}
-
-		// Remove spaces after `\HEX` escapes that are not followed by a hex digit,
-		// since they’re redundant. Note that this is only possible if the escape
-		// sequence isn’t preceded by an odd number of backslashes.
-		output = output.replace(regexExcessiveSpaces, function($0, $1, $2) {
-			if ($1 && $1.length % 2) {
-				// it’s not safe to remove the space, so don’t
-				return $0;
-			}
-			// strip the space
-			return ($1 || '') + $2;
-		});
-
-		if (!isIdentifier && options.wrap) {
-			return quote + output + quote;
-		}
-		return output;
-	};
-
-	// Expose default options (so they can be overridden globally)
-	cssesc.options = {
-		'escapeEverything': false,
-		'isIdentifier': false,
-		'quotes': 'single',
-		'wrap': false
-	};
-
-	cssesc.version = '<%= version %>';
-
-	/*--------------------------------------------------------------------------*/
-
-	// Some AMD build optimizers, like r.js, check for specific condition patterns
-	// like the following:
-	if (
-		typeof define == 'function' &&
-		typeof define.amd == 'object' &&
-		define.amd
-	) {
-		define(function() {
-			return cssesc;
-		});
-	}	else if (freeExports && !freeExports.nodeType) {
-		if (freeModule) { // in Node.js or RingoJS v0.8.0+
-			freeModule.exports = cssesc;
-		} else { // in Narwhal or RingoJS v0.7.0-
-			freeExports.cssesc = cssesc;
-		}
-	} else { // in Rhino or a web browser
-		root.cssesc = cssesc;
+		output += value;
 	}
 
-}(this));
+	if (isIdentifier) {
+		if (/^_/.test(output)) {
+			// Prevent IE6 from ignoring the rule altogether (in case this is for an
+			// identifier used as a selector)
+			output = '\\_' + output.slice(1);
+		} else if (/^-[-\d]/.test(output)) {
+			output = '\\-' + output.slice(1);
+		} else if (/\d/.test(firstChar)) {
+			output = '\\3' + firstChar + ' ' + output.slice(1);
+		}
+	}
+
+	// Remove spaces after `\HEX` escapes that are not followed by a hex digit,
+	// since they’re redundant. Note that this is only possible if the escape
+	// sequence isn’t preceded by an odd number of backslashes.
+	output = output.replace(regexExcessiveSpaces, function($0, $1, $2) {
+		if ($1 && $1.length % 2) {
+			// It’s not safe to remove the space, so don’t.
+			return $0;
+		}
+		// Strip the space.
+		return ($1 || '') + $2;
+	});
+
+	if (!isIdentifier && options.wrap) {
+		return quote + output + quote;
+	}
+	return output;
+};
+
+// Expose default options (so they can be overridden globally).
+cssesc.options = {
+	'escapeEverything': false,
+	'isIdentifier': false,
+	'quotes': 'single',
+	'wrap': false
+};
+
+cssesc.version = '<%= version %>';
+
+module.exports = cssesc;
