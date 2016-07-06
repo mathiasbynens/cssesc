@@ -65,16 +65,16 @@
 		while (counter < length) {
 			character = string.charAt(counter++);
 			codePoint = character.charCodeAt();
-			// if it’s not a printable ASCII character
+			// If it’s not a printable ASCII character…
 			if (codePoint < 0x20 || codePoint > 0x7E) {
 				if (codePoint >= 0xD800 && codePoint <= 0xDBFF && counter < length) {
-					// high surrogate, and there is a next character
+					// It’s a high surrogate, and there is a next character.
 					extra = string.charCodeAt(counter++);
 					if ((extra & 0xFC00) == 0xDC00) { // next character is low surrogate
 						codePoint = ((codePoint & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000;
 					} else {
-						// unmatched surrogate; only append this code unit, in case the next
-						// code unit is the high surrogate of a surrogate pair
+						// It’s an unmatched surrogate; only append this code unit, in case
+						// the next code unit is the high surrogate of a surrogate pair.
 						counter--;
 					}
 				}
@@ -86,7 +86,7 @@
 					} else {
 						value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
 					}
-				// `:` can be escaped as `\:`, but that fails in IE < 8
+				// Note: `:` could be escaped as `\:`, but that fails in IE < 8.
 				} else if (/[\t\n\f\r\x0B:]/.test(character)) {
 					if (!isIdentifier && character == ':') {
 						value = character;
