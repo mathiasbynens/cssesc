@@ -3,8 +3,8 @@
 const assert = require('assert');
 const cssesc = require('../cssesc.js');
 
-describe('common usage', function() {
-	it('works as expected', function() {
+describe('common usage', () => {
+	it('works as expected', () => {
 		assert.equal(
 			typeof cssesc.version,
 			'string',
@@ -154,6 +154,16 @@ describe('common usage', function() {
 			cssesc('1_23a2b', { 'isIdentifier': true }),
 			'\\31_23a2b',
 			'numbers at the start of the string with `isIdentifier: true`'
+		);
+		assert.equal(
+			cssesc('foo\\bar', { 'isIdentifier': false }),
+			'foo\\\\bar',
+			'backslashes are escaped with `isIdentifier: false`'
+		);
+		assert.equal(
+			cssesc('foo\\bar', { 'isIdentifier': true }),
+			'foo\\\\bar',
+			'backslashes are escaped with `isIdentifier: true`'
 		);
 		assert.equal(
 			cssesc('a\uD834\uDF06b'),

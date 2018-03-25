@@ -3,7 +3,7 @@
 
 const object = {};
 const hasOwnProperty = object.hasOwnProperty;
-const merge = function(options, defaults) {
+const merge = (options, defaults) => {
 	if (!options) {
 		return defaults;
 	}
@@ -24,7 +24,7 @@ const regexAlwaysEscape = /['"\\]/;
 const regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
 
 // https://mathiasbynens.be/notes/css-escapes#css
-const cssesc = function(string, options) {
+const cssesc = (string, options) => {
 	options = merge(options, cssesc.options);
 	if (options.quotes != 'single' && options.quotes != 'double') {
 		options.quotes = 'single';
