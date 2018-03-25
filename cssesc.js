@@ -18,8 +18,8 @@ const merge = function(options, defaults) {
 	return result;
 };
 
-const regexAnySingleEscape = /[ -,\./;-@\[-\^`\{-~]/;
-const regexSingleEscape = /[ !#-&\(-,\./;-@\[\]\^`\{-~]/;
+const regexAnySingleEscape = /[ -,\.\/;-@\[-\^`\{-~]/;
+const regexSingleEscape = /[ -,\.\/;-@\[\]\^`\{-~]/;
 const regexAlwaysEscape = /['"\\]/;
 const regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
 
