@@ -10,6 +10,6 @@ var set = regenerate().add(
 
 module.exports = {
 	'anySingleEscape': set.toString(),
-	'singleEscapes': set.remove('"', '\'', '\\').toString(),
+	'singleEscapes': set.remove('\\').toString(),
 	'version': JSON.parse(fs.readFileSync('package.json', 'utf8')).version
 };

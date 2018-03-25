@@ -96,6 +96,11 @@ describe('common usage', function() {
 			'more backslashes with `isIdentifier: true`'
 		);
 		assert.equal(
+			cssesc('id"ent\'ifier', { 'isIdentifier': true }),
+			'id\\"ent\\\'ifier',
+			'quotes are escaped with `isIdentifier: true`'
+		);
+		assert.equal(
 			cssesc('a"b\'c\xA9d', { 'wrap': true }),
 			'\'a"b\\\'c\\A9 d\'',
 			'quotes with `wrap: true`'
