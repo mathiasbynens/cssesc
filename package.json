@@ -1,6 +1,6 @@
 {
   "name": "cssesc",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "A JavaScript library for escaping CSS strings and identifiers while generating the shortest possible ASCII-only output.",
   "homepage": "https://mths.be/cssesc",
   "engines": {
