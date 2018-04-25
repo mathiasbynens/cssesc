@@ -188,7 +188,7 @@ See `cssesc --help` for the full list of options.
 
 ## Support
 
-This library supports Node.js v4+ only. For a version that supports browser and environments out-of-the-box, [see v0.1.0](https://github.com/mathiasbynens/cssesc/releases/tag/v0.1.0).
+This library supports the Node.js and browser versions mentioned in [`.babelrc`](https://github.com/mathiasbynens/cssesc/blob/master/.babelrc). For a version that supports a wider variety of legacy browsers and environments out-of-the-box, [see v0.1.0](https://github.com/mathiasbynens/cssesc/releases/tag/v0.1.0).
 
 ## Author
 
