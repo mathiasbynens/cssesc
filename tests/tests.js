@@ -56,6 +56,11 @@ describe('common usage', () => {
 			'foo:bar (avoid `\\:` for IE < 8 compatibility) with `isIdentifier: true`'
 		);
 		assert.equal(
+			cssesc('hello:there', { 'isIdentifier': true }),
+			'hello\\3A there',
+			'hello:there (avoid `\\:` for IE < 8 compatibility) with `isIdentifier: true`'
+		);
+		assert.equal(
 			cssesc('_foo_bar', { 'isIdentifier': false }),
 			'_foo_bar',
 			'_foo_bar with `isIdentifier: false`'
