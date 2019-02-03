@@ -4,7 +4,7 @@ var fs = require('fs');
 // Characters with special meaning in CSS, except for quotes and backslashes
 // (they get a separate regex)
 var set = regenerate().add(
-	' ', '!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '.', '/', ';', '<',
+	' ', '!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '.', '/', ';', '<', ':',
 	'=', '>', '?', '@', '[', ']', '^', '`', '{', '|', '}', '~', '"', '\'', '\\'
 );
 

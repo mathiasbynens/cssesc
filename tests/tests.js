@@ -48,12 +48,12 @@ describe('common usage', () => {
 		assert.equal(
 			cssesc('foo:bar', { 'isIdentifier': false }),
 			'foo:bar',
-			'foo:bar (avoid `\\:` for IE < 8 compatibility) with `isIdentifier: false`'
+			'foo:bar with `isIdentifier: false`'
 		);
 		assert.equal(
 			cssesc('foo:bar', { 'isIdentifier': true }),
-			'foo\\3A bar',
-			'foo:bar (avoid `\\:` for IE < 8 compatibility) with `isIdentifier: true`'
+			'foo\\:bar',
+			'foo:bar with `isIdentifier: true`'
 		);
 		assert.equal(
 			cssesc('_foo_bar', { 'isIdentifier': false }),
@@ -62,8 +62,8 @@ describe('common usage', () => {
 		);
 		assert.equal(
 			cssesc('_foo_bar', { 'isIdentifier': true }),
-			'\\_foo_bar',
-			'_foo_bar (escape leading `_` for IE6 compatibility) with `isIdentifier: true`'
+			'_foo_bar',
+			'_foo_bar with `isIdentifier: true`'
 		);
 		assert.equal(
 			cssesc('a\t\n\v\f\rb'),

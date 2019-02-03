@@ -1,4 +1,4 @@
-/*! https://mths.be/cssesc v1.0.1 by @mathias */
+/*! https://mths.be/cssesc v2.0.0 by @mathias */
 'use strict';
 
 var object = {};
@@ -16,8 +16,8 @@ var merge = function merge(options, defaults) {
 	return result;
 };
 
-var regexAnySingleEscape = /[ -,\.\/;-@\[-\^`\{-~]/;
-var regexSingleEscape = /[ -,\.\/;-@\[\]\^`\{-~]/;
+var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
+var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
 var regexAlwaysEscape = /['"\\]/;
 var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
 
@@ -60,13 +60,8 @@ var cssesc = function cssesc(string, options) {
 				} else {
 					value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
 				}
-				// Note: `:` could be escaped as `\:`, but that fails in IE < 8.
-			} else if (/[\t\n\f\r\x0B:]/.test(character)) {
-				if (!isIdentifier && character == ':') {
-					value = character;
-				} else {
-					value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
-				}
+			} else if (/[\t\n\f\r\x0B]/.test(character)) {
+				value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
 			} else if (character == '\\' || !isIdentifier && (character == '"' && quote == character || character == '\'' && quote == character) || isIdentifier && regexSingleEscape.test(character)) {
 				value = '\\' + character;
 			} else {
@@ -77,11 +72,7 @@ var cssesc = function cssesc(string, options) {
 	}
 
 	if (isIdentifier) {
-		if (/^_/.test(output)) {
-			// Prevent IE6 from ignoring the rule altogether (in case this is for an
-			// identifier used as a selector)
-			output = '\\_' + output.slice(1);
-		} else if (/^-[-\d]/.test(output)) {
+		if (/^-[-\d]/.test(output)) {
 			output = '\\-' + output.slice(1);
 		} else if (/\d/.test(firstChar)) {
 			output = '\\3' + firstChar + ' ' + output.slice(1);
@@ -114,6 +105,6 @@ cssesc.options = {
 	'wrap': false
 };
 
-cssesc.version = '1.0.1';
+cssesc.version = '2.0.0';
 
 module.exports = cssesc;
