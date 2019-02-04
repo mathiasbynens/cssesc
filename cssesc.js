@@ -1,4 +1,4 @@
-/*! https://mths.be/cssesc v2.0.0 by @mathias */
+/*! https://mths.be/cssesc v1.0.1 by @mathias */
 'use strict';
 
 var object = {};
@@ -105,6 +105,6 @@ cssesc.options = {
 	'wrap': false
 };
 
-cssesc.version = '2.0.0';
+cssesc.version = '1.0.1';
 
 module.exports = cssesc;
