@@ -1,4 +1,4 @@
-# cssesc [![Build status](https://travis-ci.org/mathiasbynens/cssesc.svg?branch=master)](https://travis-ci.org/mathiasbynens/cssesc) [![Code coverage status](https://img.shields.io/codecov/c/github/mathiasbynens/cssesc.svg)](https://codecov.io/gh/mathiasbynens/cssesc)
+# cssesc [![Build status](https://travis-ci.org/mathiasbynens/cssesc.svg?branch=master)](https://travis-ci.org/mathiasbynens/cssesc) [![Code coverage status](https://img.shields.io/codecov/c/github/mathiasbynens/cssesc.svg)](https://codecov.io/gh/mathiasbynens/cssesc) [![CDNJS version](https://img.shields.io/cdnjs/v/cssesc.svg)](https://cdnjs.com/libraries/cssesc)
 
 A JavaScript library for escaping CSS strings and identifiers while generating the shortest possible ASCII-only output.
 
