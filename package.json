@@ -40,7 +40,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "codecov": "^1.0.1",
+    "codecov": "^3.7.1",
     "grunt": "^1.0.1",
     "grunt-template": "^1.0.0",
     "istanbul": "^0.4.4",
