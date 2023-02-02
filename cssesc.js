@@ -18,7 +18,6 @@ var merge = function merge(options, defaults) {
 
 var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
 var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-var regexAlwaysEscape = /['"\\]/;
 var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
 
 // https://mathiasbynens.be/notes/css-escapes#css
