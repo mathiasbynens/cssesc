@@ -182,5 +182,6 @@ describe('common usage', () => {
 			'\\6C\\6F\\6C\\77\\61\\74\\"\\66\\6F\\6F\\\'\\62\\61\\72\\A9\\6B',
 			'`escapeEverything: true`'
 		);
+		assert.ok(cssesc(`${'\\'.repeat(50000)}A`), 'test timed out');
 	});
 });
