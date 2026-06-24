@@ -83,7 +83,10 @@ const cssesc = (string, options) => {
 	}
 
 	if (isIdentifier) {
-		if (/^-[-\d]/.test(output)) {
+		if (output == '-') {
+			// A lone `-` is not a valid identifier; escape it.
+			output = '\\-';
+		} else if (/^-[-\d]/.test(output)) {
 			output = '\\-' + output.slice(1);
 		} else if (/\d/.test(firstChar)) {
 			output = '\\3' + firstChar + ' ' + output.slice(1);

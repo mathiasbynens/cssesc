@@ -26,6 +26,16 @@ describe('common usage', () => {
 			'--foo with `isIdentifier: true`'
 		);
 		assert.equal(
+			cssesc('-', { 'isIdentifier': false }),
+			'-',
+			'lone - with `isIdentifier: false`'
+		);
+		assert.equal(
+			cssesc('-', { 'isIdentifier': true }),
+			'\\-',
+			'lone - with `isIdentifier: true`'
+		);
+		assert.equal(
 			cssesc('-0foo', { 'isIdentifier': false }),
 			'-0foo',
 			'-0foo with `isIdentifier: false`'
