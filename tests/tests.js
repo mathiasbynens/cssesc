@@ -3,6 +3,21 @@
 const assert = require('assert');
 const cssesc = require('../cssesc.js');
 
+describe('numeric identifiers with escapeEverything', () => {
+	for (const [input, expected] of [
+		['1', '\\31'],
+		['1abc', '\\31\\61\\62\\63'],
+		['9foo', '\\39\\66\\6F\\6F']
+	]) {
+		it('does not escape the leading digit twice: ' + input, () => {
+			assert.equal(
+				cssesc(input, { 'isIdentifier': true, 'escapeEverything': true }),
+				expected
+			);
+		});
+	}
+});
+
 describe('common usage', () => {
 	it('works as expected', () => {
 		assert.equal(
