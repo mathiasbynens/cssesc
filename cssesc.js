@@ -74,7 +74,7 @@ var cssesc = function cssesc(string, options) {
 	if (isIdentifier) {
 		if (/^-[-\d]/.test(output)) {
 			output = '\\-' + output.slice(1);
-		} else if (/\d/.test(firstChar)) {
+		} else if (/\d/.test(firstChar) && !options.escapeEverything) {
 			output = '\\3' + firstChar + ' ' + output.slice(1);
 		}
 	}
